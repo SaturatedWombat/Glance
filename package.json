@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xandercernek/Glance.git"
+    "url": "git+http://github.com/xandercernek/Glance.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xandercernek/Glance/issues"
+    "url": "http://github.com/xandercernek/Glance/issues"
   },
-  "homepage": "https://github.com/xandercernek/Glance#readme",
+  "homepage": "http://github.com/xandercernek/Glance#readme",
   "dependencies": {
     "express": "4.9.8",
     "socket.io": "1.4.8"
