@@ -1,29 +1,19 @@
 {
-  "manifest_version": 2,
-
-  "name": "Glance",
-  "description": "The simple social network",
-  "version": "1.0",
-
-  "chrome_url_overrides" : {
-      "newtab": "index.html"
-    },
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "newtab.html"
+  "name": "glance",
+  "version": "1.0.0",
+  "description": "the simple social network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-
-  "engines": {
-    "node": "4.6.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xandercernek/Glance.git"
   },
-
-  "dependencies": {
-    "private": true
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xandercernek/Glance/issues"
   },
-
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ]
+  "homepage": "https://github.com/xandercernek/Glance#readme"
 }
