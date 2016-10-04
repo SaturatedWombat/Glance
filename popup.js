@@ -1,13 +1,20 @@
-var enter = document.getElementById("entered");
-enter.addEventListener("submit", chat, false);
+document.addEventListener('DOMContentLoaded', function() {
+  var checkPageButton = document.getElementById('newtab');
+  checkPageButton.addEventListener('click', function() {
 
-function chat(enter) {
-  var message = document.getElementById("message").value;
-  var newMessage = document.getElementById("newMessage");
 
-  enter.which = enter.which || enter.keyCode;
-  if (enter.keyCode == 13) {
-    newMessage.innerHTML = message;
-  }
+    chrome.tabs.getSelected(null, function(tab) {
+      /*
+      d = document;
 
-}
+      var f = d.createElement('form');
+      f.action = 'newtab.html';
+      f.method = 'post';
+      d.body.appendChild(f);
+      f.submit();
+      */
+      window.open("newtab.html");
+
+    });
+  }, false);
+}, false);
