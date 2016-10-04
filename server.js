@@ -19,3 +19,8 @@ io.on('connection', function(socket){
 http.listen(process.env.PORT || 3000, function(){
   console.log('listening on', http.address().port);
 });
+
+io.configure(function () {
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
+});
