@@ -18,6 +18,8 @@
     "node": "4.6.0"
   },
 
+  "private": true,
+
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/"
