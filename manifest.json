@@ -4,6 +4,7 @@
   "name": "Glance",
   "description": "The simple social network",
   "version": "1.0",
+  "main": "server.js",
 
   "chrome_url_overrides" : {
       "newtab": "index.html"
@@ -17,5 +18,10 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/"
-  ]
+  ],
+
+  "dependencies": {
+    "socket.io": "^1.4.8",
+    "express": "~4.9.8"
+  }
 }
