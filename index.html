@@ -35,6 +35,7 @@
         $('#messages').append($('<li>').text(msg));
         if ($("#messages li").length > 5){
           $("#messages li").eq($("#messages li").length-1).remove();
+          $('#messages').append($("#messages li").length-1);
         }
       });
 
