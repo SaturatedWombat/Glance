@@ -18,12 +18,6 @@
     <center><h1>Glance</h1></center>
     <center><h5>The Simple Social Network</h5></center>
     <ul id="messages"></ul>
-    <script>
-    var lis = $("messages");
-    if(lis.length > 5) {
-       lis.eq(lis.length - 1).remove();
-    }
-    </script>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
@@ -40,6 +34,10 @@
       socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
       });
+      var lis = $("messages");
+      if(lis.length > 5) {
+        lis.eq(lis.length - 1).remove();
+      }
     </script>
   </body>
 </html>
