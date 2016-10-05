@@ -9,6 +9,10 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+    var lis = $("messages");
+    if(lis.length > 5) {
+      console.log("greater");
+    }
   });
   console.log('a user connected');
   socket.on('disconnect', function(){
