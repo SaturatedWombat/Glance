@@ -12,9 +12,10 @@ io.on('connection', function(socket){
     var lis = $("messages");
     if(lis.length > 100) {
       lis.eq(lis.length - 1).remove();
+      console.log("removed");
     }
 
-    $("messages") = lis
+    $("messages") = lis;
   });
   console.log('a user connected');
   socket.on('disconnect', function(){
