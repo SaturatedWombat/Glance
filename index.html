@@ -34,8 +34,8 @@
       socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
         if ($("#messages li").length > 5){
-          $("#messages li").eq($("#messages li").length-1).remove();
-          $('#messages').append($("#messages li").length-1);
+          $("#messages li").eq(0).remove();
+          $('#messages').append(0);
         }
       });
 
