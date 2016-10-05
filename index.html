@@ -33,7 +33,9 @@
       });
       socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
-        $("#messages").append($("#messages li").length);
+        if ($("#messages li").length){
+          $("#messages").eq($("#messages li").length - 1).remove();
+        }
       });
 
     </script>
