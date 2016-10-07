@@ -1,6 +1,6 @@
 {
-  "name": "glance",
-  "version": "1.0.0",
+  "name": "Glance",
+  "version": "0.0.1",
   "description": "the simple social network",
   "main": "server.js",
   "scripts": {
