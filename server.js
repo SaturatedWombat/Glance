@@ -30,8 +30,11 @@ io.on('connection', function(socket){
   // messaging
   socket.on('sent', function(msg, callback){
     var new_msg = msg.trim();
-    if(new_msg.substr(0,5) === "tell ") {
-      new_msg = new_msg.substr(5);
+    var tell = new_msg.substr(0,5);
+    var w = new_msg.substr(0,3);
+
+    function whisper(index) {
+      new_msg = new_msg.substr(index);
       var ind = new_msg.indexOf(' ');
       if (ind !== -1) {
         var usern = new_msg.substr(0, ind);
@@ -47,6 +50,13 @@ io.on('connection', function(socket){
       else {
         callback("No message received. Try again.");
       }
+    }
+
+    if(tell === "tell ") {
+      whisper(5);
+    }
+    else if (w === "/w ") {
+      whisper(3);
     }
     else {
       io.emit('message', {msg: new_msg, name: socket.username});
