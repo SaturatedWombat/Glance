@@ -48,6 +48,8 @@
         width: 90%;
         height: 50vh;
         margin: 0 auto;
+        word-wrap: break-word;
+        overflow: auto;
       }
       #users {
         float: left;
@@ -76,6 +78,22 @@
         padding:0 0 0 1.5em;
         list-style-image: none;
         list-style-type: none;
+        line-height: 15px;
+      }
+      .e {
+        color: darkblue;
+      }
+      .priv {
+        color: gray;
+        font-style: italic;
+      }
+      .gone {
+        color: firebrick;
+        font-style: bold;
+      }
+      .here {
+        color: darkgreen;
+        font-style: bold;
       }
     </style>
   </head>
@@ -97,11 +115,11 @@
         <div id="chat">
           <ul id="messages"></ul>
         </div>
-        <form id="send">
-          <center><input id="text"></input></center>
-          <center><input type="submit" id="mEnter"></input></center>
-        </form>
       </div>
+      <form id="send">
+        <center><input id="text"></input></center>
+        <center><input type="submit" id="mEnter"></input></center>
+      </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
@@ -135,26 +153,38 @@
 
         $mForm.submit(function(e) {
           e.preventDefault();
-          //  json args eventually
-          socket.emit("sent", $mBox.val());
+
+          socket.emit("sent", $mBox.val(), function(data) {
+            $messages.append("<span class='e'><b>" + data + "</span><br/>");
+          });
+          $("#chatWrap").scrollTop($("#chatWrap")[0].scrollHeight);
           $mBox.val("");
         });
 
-        socket.on("users", function(names) {
+        socket.on("users", function(names, name, here) {
           var str = "";
           for (var i = 0; i < names.length; i++) {
             str += names[i] + "<br/>";
           }
           $users.html(str);
+          if (!here) {
+            $messages.append("<span class='gone'>" + name + " has disconnected.<br/></span>");
+          }
+          else {
+            $messages.append("<span class='here'>" + name + " has connected.<br/></span>");
+          }
+          $("#chatWrap").scrollTop($("#chatWrap")[0].scrollHeight);
         });
 
         socket.on("message", function(msg) {
-          if ($("#messages li").length > 15) {
-            $("#messages li").eq(0).remove();
-          }
           var strings = [];
-          strings.push("<li><b>" + msg.name + ": </b>" + msg.msg + "<br/>")
+          strings.push("<span class='data'><li><b>" + msg.name + ": </b>" + msg.msg + "</span>");
           $messages.append(strings.join(""));
+          $("#chatWrap").scrollTop($("#chatWrap")[0].scrollHeight);
+        });
+
+        socket.on("priv", function(msg) {
+          $messages.append("<span class='priv'><b>" + msg.name + ": </b>" + msg.msg + "</span><br/>");
         });
       });
     </script>
